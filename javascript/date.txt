@@ -1,0 +1,12 @@
+// Date time customization in js 
+// dd -> Friday, December 13, 2019
+// d  -> Fri Dec 13, 2019
+
+var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+var today  = new Date()
+var dd = today.toLocaleDateString("en-US", options);
+
+const months = ["Jan", "Feb", "Mar","Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+const days= ["Sun", "Mon", "Tue", "Wed", "THU","Fri","Sat"]
+let d = days[today.getDay()]+' '+months[today.getMonth()]+' '+today.getDate() + ", " + today.getFullYear();
+
