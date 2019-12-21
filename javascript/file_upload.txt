@@ -59,3 +59,84 @@ in App.vue
    <p class="doc-upload"><file-select v-model="file"></file-select></p>
    <p class="doc-upload" v-if="file">{{ file.name }}</p>
 </div>
+
+====================================================================================
+Use codepen to check (using javascript) ->
+==================================
+HTML ->
+
+<div>
+    <input type='file'> 
+ <span id='browse-button'>Select File</span>
+ <span id='val'></span>
+
+</div>
+
+====================
+
+JS ->
+
+$('#browse-button').click(function () {
+    $("input[type='file']").trigger('click');
+})
+
+$("input[type='file']").change(function () {
+    $('#val').text(this.value.replace(/C:\\fakepath\\/i, ''))
+})
+
+=================
+
+CSS ->
+
+* {
+    margin:0;
+    padding:0;
+    font-family: tahoma;
+}
+body {
+    padding: 30px;
+    border: none !important;
+}
+div {
+    width: 60px;
+    height: 25px;
+    background-color: white;
+    box-shadow: 1px 2px 3px #ededed;
+    position:relative;
+    border: 1px solid #d8d8d8;
+}
+input[type='file'] {
+    width:10px;
+    height:25px;
+    opacity:0
+}
+#val {
+    width: 400px;
+    height:25px;
+    position: absolute;
+    top: 0;
+    left: 55px;
+    font-size:13px;
+    line-height: 25px;
+    text-indent: 10px;
+    pointer-events: none;
+}
+#browse-button {
+    cursor: pointer;
+    display: block;
+    width: 90px;
+    background-color: purple;
+    height:25px;
+    color: white;
+    position: absolute;
+    right:0;
+    top: 0;
+    font-size: 11px;
+    line-height:25px;
+    text-align: center;
+    -webkit-transition: 500ms all;
+    -moz-transition: 500ms all;
+    transition: 500ms all;
+}
+
+
