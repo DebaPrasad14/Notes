@@ -1,0 +1,61 @@
+Multiple file uploads -
+=====================
+
+<input type="file" id="file" ref="myFiles" class="custom-file-input" 
+  @change="previewFiles" multiple>
+and in your component options:
+
+data() {
+  return {
+    files: [],
+  }
+},
+methods: {
+  previewFiles() {
+    this.files = this.$refs.myFiles.files
+  }
+}
+
+===========================
+single file upload -
+one.vue
+
+<template>
+  <label class="file-select">
+    <div class="select-button">
+      <b-button id="browse-button" @click="onClick">
+        Browse
+      </b-button>
+    </div>
+    <input type="file" ref="file" @change="handleFileChange" />
+  </label>
+</template>
+
+<script>
+export default {
+  methods: {
+    handleFileChange(e) {
+      this.$emit("input", e.target.files[0]);
+    },
+    onClick() {
+      this.$refs.file.click();
+    }
+  },
+};
+</script>
+
+<style scoped>
+.file-select > input[type="file"] {
+  display: none;
+}
+</style>
+
+==================
+
+in App.vue
+==============
+
+<div>
+   <p class="doc-upload"><file-select v-model="file"></file-select></p>
+   <p class="doc-upload" v-if="file">{{ file.name }}</p>
+</div>
